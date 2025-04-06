@@ -9,12 +9,16 @@ public class TeamRepository(ApplicationDbContext context) : ITeamRepository
 {
     public async Task<Team?> GetByIdAsync(Guid id)
     {
-        return await context.Teams.FindAsync(id);
+        return await context.Teams
+            .Include(t => t.Players)
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<IEnumerable<Team>> GetAllAsync()
     {
-        return await context.Teams.ToListAsync();
+        return await context.Teams
+            .Include(t => t.Players)
+            .ToListAsync();
     }
 
     public async Task<Team> CreateAsync(Team team)
@@ -26,7 +30,10 @@ public class TeamRepository(ApplicationDbContext context) : ITeamRepository
 
     public async Task<Team?> UpdateAsync(Guid id, Team team)
     {
-        var existingTeam = await context.Teams.FindAsync(id);
+        var existingTeam = await context.Teams
+            .Include(t => t.Players)
+            .FirstOrDefaultAsync(t => t.Id == id);
+            
         if (existingTeam == null) return null;
 
         existingTeam.Name = team.Name;

@@ -25,5 +25,11 @@ public record TeamResponseDto(
     string Name,
     string Description,
     DateTime CreatedAt,
-    DateTime? UpdatedAt
+    DateTime? UpdatedAt,
+    IEnumerable<PlayerSummaryDto> Players
+);
+
+public record PlayerSummaryDto(
+    Guid Id,
+    string Name
 ); 

@@ -19,9 +19,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add Repositories
 builder.Services.AddScoped<ITeamRepository, TeamRepository>();
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 
 // Add Application Services
 builder.Services.AddScoped<ITeamService, TeamService>();
+builder.Services.AddScoped<IPlayerService, PlayerService>();
 
 var app = builder.Build();
 

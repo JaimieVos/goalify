@@ -69,7 +69,8 @@ public class TeamService(ITeamRepository teamRepository) : ITeamService
             team.Name,
             team.Description,
             team.CreatedAt,
-            team.UpdatedAt
+            team.UpdatedAt,
+            team.Players.Select(p => new PlayerSummaryDto(p.Id, p.Name))
         );
     }
 } 
