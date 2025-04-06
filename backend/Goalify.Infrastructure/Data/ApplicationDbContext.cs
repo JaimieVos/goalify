@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Team> Teams { get; set; } = null!;
     public DbSet<Player> Players { get; set; } = null!;
+    public DbSet<Tournament> Tournaments { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,5 +21,9 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Player>()
             .HasMany(p => p.Teams)
             .WithMany(t => t.Players);
+
+        modelBuilder.Entity<Tournament>()
+            .HasMany(t => t.Teams)
+            .WithMany(t => t.Tournaments);
     }
 } 

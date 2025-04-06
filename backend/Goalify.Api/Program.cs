@@ -20,10 +20,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Add Repositories
 builder.Services.AddScoped<ITeamRepository, TeamRepository>();
 builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
 
 // Add Application Services
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<ITournamentService, TournamentService>();
 
 var app = builder.Build();
 

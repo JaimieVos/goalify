@@ -3,24 +3,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Goalify.Core.Entities;
 
-public class Team
+public class Tournament
 {
     [Key]
     public Guid Id { get; init; }
     
     [Required]
-    [MaxLength(30)]
+    [MaxLength(100)]
     public required string Name { get; set; }
     
-    [MaxLength(200)]
-    public string Description { get; set; } = string.Empty;
+    [Required]
+    public DateTime StartDate { get; set; }
+    
+    public DateTime? EndDate { get; set; }
     
     [Required]
     public DateTime CreatedAt { get; init; }
     
     public DateTime? UpdatedAt { get; set; }
 
-    public ICollection<Player> Players { get; set; } = new List<Player>();
-    
-    public ICollection<Tournament> Tournaments { get; set; } = new List<Tournament>();
+    public ICollection<Team> Teams { get; set; } = new List<Team>();
 } 

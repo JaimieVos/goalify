@@ -8,7 +8,6 @@ public class TeamService(ITeamRepository teamRepository) : ITeamService
 {
     public async Task<TeamResponseDto> CreateTeamAsync(CreateTeamDto dto)
     {
-        // Validate that Name is not empty
         if (string.IsNullOrWhiteSpace(dto.Name))
         {
             throw new ArgumentException("Team name cannot be empty", nameof(dto.Name));
@@ -40,7 +39,6 @@ public class TeamService(ITeamRepository teamRepository) : ITeamService
 
     public async Task<TeamResponseDto?> UpdateTeamAsync(Guid id, UpdateTeamDto dto)
     {
-        // Validate that Name is not empty
         if (string.IsNullOrWhiteSpace(dto.Name))
         {
             throw new ArgumentException("Team name cannot be empty", nameof(dto.Name));
