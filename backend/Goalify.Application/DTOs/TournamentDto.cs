@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Goalify.Core.Enums;
 
 namespace Goalify.Application.DTOs;
@@ -36,6 +37,7 @@ public record UpdateTournamentDto(
 public record TournamentResponseDto(
     Guid Id,
     string Name,
+    TournamentFormat Format,
     DateTime StartDate,
     DateTime? EndDate,
     DateTime CreatedAt,

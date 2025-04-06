@@ -91,6 +91,7 @@ public class TournamentService(ITournamentRepository tournamentRepository) : ITo
         return new TournamentResponseDto(
             tournament.Id,
             tournament.Name,
+            tournament.Format,
             tournament.StartDate,
             tournament.EndDate,
             tournament.CreatedAt,
