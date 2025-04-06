@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Goalify.Core.Enums;
 
 namespace Goalify.Core.Entities;
 
@@ -12,6 +12,8 @@ public class Tournament
     [MaxLength(100)]
     public required string Name { get; set; }
     
+    public required TournamentFormat Format { get; init; }
+    
     [Required]
     public DateTime StartDate { get; set; }
     
@@ -23,4 +25,6 @@ public class Tournament
     public DateTime? UpdatedAt { get; set; }
 
     public ICollection<Team> Teams { get; set; } = new List<Team>();
+    
+    public ICollection<TournamentStage> Stages { get; set; } = new List<TournamentStage>();
 } 

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Goalify.Core.Enums;
 
 namespace Goalify.Application.DTOs;
 
@@ -6,6 +7,10 @@ public record CreateTournamentDto(
     [Required(ErrorMessage = "Tournament name is required")]
     [StringLength(100, ErrorMessage = "Tournament name cannot exceed 100 characters")]
     string Name,
+    
+    [Required(ErrorMessage = "Tournament format is required")]
+    [EnumDataType(typeof(TournamentFormat), ErrorMessage = "Invalid tournament format")]
+    TournamentFormat Format,
     
     [Required(ErrorMessage = "Start date is required")]
     DateTime StartDate,
@@ -17,6 +22,10 @@ public record UpdateTournamentDto(
     [Required(ErrorMessage = "Tournament name is required")]
     [StringLength(100, ErrorMessage = "Tournament name cannot exceed 100 characters")]
     string Name,
+    
+    [Required(ErrorMessage = "Tournament format is required")]
+    [EnumDataType(typeof(TournamentFormat), ErrorMessage = "Invalid tournament format")]
+    TournamentFormat Format,
     
     [Required(ErrorMessage = "Start date is required")]
     DateTime StartDate,

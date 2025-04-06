@@ -24,6 +24,7 @@ public class TournamentService(ITournamentRepository tournamentRepository) : ITo
         {
             Id = Guid.NewGuid(),
             Name = dto.Name,
+            Format = dto.Format,
             StartDate = dto.StartDate,
             EndDate = dto.EndDate,
             CreatedAt = DateTime.UtcNow
@@ -61,6 +62,7 @@ public class TournamentService(ITournamentRepository tournamentRepository) : ITo
         {
             Id = id,
             Name = dto.Name,
+            Format = dto.Format,
             StartDate = dto.StartDate,
             EndDate = dto.EndDate
         };
